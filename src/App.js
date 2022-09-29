@@ -1,8 +1,12 @@
 import './App.css';
 
-function App() {
+const schedule = {
+  title: "CS Courses for 2018 - 2019"
+}
+
+const App = () => {
   return (
-    <h1>course registration</h1>
+    <h1>{schedule.title}</h1>
   );
 }
 
