@@ -1,0 +1,23 @@
+.course-card{
+    border-style: solid;
+    border-color: rgb(197, 197, 197);
+    border-radius: 7px;
+    border-width: 2px;
+    padding: 11px;
+    margin: 5px 5px;
+    position: relative;
+    height: 210px;
+}
+
+.meeting-time{
+    padding: 6px;
+    border-top: 1px solid rgb(197, 197, 197);
+    display: block;
+    position: absolute;
+    top: 160px;
+    width: 80%;
+}
+
+.class-title, h2{
+    padding: 6px;
+}

@@ -1,6 +1,10 @@
+import "./Course.css";
+
 const Course = ({course}) => (
-    <div>
-        {course.term} CS {course.number}: {course.title}
+    <div className="course-card">
+        <h2>{course.term} CS {course.number}</h2>
+        <p className="class-title">{course.title}</p>
+        <p className="meeting-time">{course.meets}</p>
     </div>
 );
 
