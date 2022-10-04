@@ -2,3 +2,7 @@
     display: grid;
     grid-template-columns: repeat(auto-fill, 14rem);
   }
+
+.button{
+    padding: 2px;
+}

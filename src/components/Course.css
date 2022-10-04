@@ -7,6 +7,12 @@
     margin: 5px 5px;
     position: relative;
     height: 210px;
+    cursor: pointer;
+}
+
+.selected{
+    background-color:lemonchiffon;
+    color: green;
 }
 
 .meeting-time{
@@ -21,3 +27,4 @@
 .class-title, h2{
     padding: 6px;
 }
+

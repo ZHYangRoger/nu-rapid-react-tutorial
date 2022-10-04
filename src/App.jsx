@@ -1,13 +1,21 @@
 import './App.css';
 import Banner from "./components/Banner.jsx";
-import CourseList from "./components/CourseList.jsx";
 import {useJsonQuery} from "./utilities/fetch.js";
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import TermPage from "./components/TermPage.jsx";
+import {useState} from "react";
 
 const queryClient = new QueryClient();
 
 const Main = () => {
+  const [selected, setSelected] = useState([]);
+
+  const toggleSelected = (course) => setSelected(
+    selected.includes(course)
+    ? selected.filter(x => x !== course)
+    : [...selected, course]
+  );
+
   const [schedule, isLoading, error] = useJsonQuery("https://courses.cs.northwestern.edu/394/guides/data/cs-courses.php");
 
   if (error) return <h1>Error loading user data: {`${error}`}</h1>;
@@ -17,7 +25,7 @@ const Main = () => {
   return(
       <div className="entire">
         <Banner title={schedule.title}></Banner>
-        <TermPage courses={schedule.courses}></TermPage>
+        <TermPage courses={schedule.courses} selected={selected} toggleSelected={toggleSelected}></TermPage>
       </div>
     );
 };

@@ -5,7 +5,7 @@ import {useState} from "react";
 const terms = ["Fall", "Winter", "Spring"];
 
 const TermButton = ({term, selection, setSelection}) => (
-    <div>
+    <div className="button">
         <input type="radio" id={term} className="btn-check" checked={term === selection} autoComplete="off"
         onChange={() => setSelection(term)} />
         <label className="btn btn-success mb-1 p-2" htmlFor={term}>
@@ -22,21 +22,22 @@ const TermSelector = ({selection, setSelection}) => (
   </div>
 )
 
-const Term = ({selection, courses}) => {
-    const curCourse = Object.values(courses).filter((course) => selection == course.term);
+const Term = ({selection, courses, selected, toggleSelected}) => {
+    //const curCourse = Object.values(courses).filter((course) => selection === course.term);
+    //console.log(curCourse);
     return(
         <div className="course-list" >
-            { Object.entries(curCourse).map(([id, course]) => <Course key={id} course={course} />) }
+            { Object.entries(courses).map(([id, course]) => selection === course.term && <Course key={id} identification ={id} course={course} selected={selected} toggleSelected={toggleSelected}/>) }
         </div>
     )
 };
   
-  const TermPage = ({courses}) => {
+  const TermPage = ({courses, selected, toggleSelected}) => {
     const [selection, setSelection] = useState(() => Object.values(terms)[0]);
     return (
       <div>
         <TermSelector selection={selection} setSelection={setSelection} />
-        <Term selection={selection} courses={courses}/>
+        <Term selection={selection} courses={courses} selected={selected} toggleSelected={toggleSelected}/>
       </div>
     );
   }
