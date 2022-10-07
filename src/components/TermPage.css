@@ -6,3 +6,7 @@
 .button{
     padding: 2px;
 }
+
+.btn-right{
+    float: right;
+}

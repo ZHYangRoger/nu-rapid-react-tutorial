@@ -1,6 +1,8 @@
 import "./TermPage.css";
 import Course from "./Course.jsx";
 import {useState} from "react";
+import Modal from './Modal';
+import Cart from './Cart';
 
 const terms = ["Fall", "Winter", "Spring"];
 
@@ -34,8 +36,19 @@ const Term = ({selection, courses, selected, toggleSelected}) => {
   
   const TermPage = ({courses, selected, toggleSelected}) => {
     const [selection, setSelection] = useState(() => Object.values(terms)[0]);
+
+    const [open, setOpen] = useState(false);
+
+    const openModal = () => setOpen(true);
+    const closeModal = () => setOpen(false);
+
     return (
-      <div>
+      <div className="term">
+        <button className="btn btn-outline-dark btn-right" onClick={openModal}><i className="bi bi-cart4">Your Courses</i></button>
+            <Modal open={open} close={closeModal}>
+                <Cart courses={courses} selected={selected} />
+            </Modal>
+
         <TermSelector selection={selection} setSelection={setSelection} />
         <Term selection={selection} courses={courses} selected={selected} toggleSelected={toggleSelected}/>
       </div>
