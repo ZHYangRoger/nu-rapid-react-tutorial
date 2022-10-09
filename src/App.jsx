@@ -10,10 +10,10 @@ const queryClient = new QueryClient();
 const Main = () => {
   const [selected, setSelected] = useState([]);
 
-  const toggleSelected = (course) => setSelected(
-    selected.includes(course)
-    ? selected.filter(x => x !== course)
-    : [...selected, course]
+  const toggleSelected = (id) => setSelected(
+    selected.includes(id)
+    ? selected.filter(x => x !== id)
+    : [...selected, id]
   );
 
   const [schedule, isLoading, error] = useJsonQuery("https://courses.cs.northwestern.edu/394/guides/data/cs-courses.php");

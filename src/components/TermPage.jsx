@@ -26,10 +26,10 @@ const TermSelector = ({selection, setSelection}) => (
 
 const Term = ({selection, courses, selected, toggleSelected}) => {
     //const curCourse = Object.values(courses).filter((course) => selection === course.term);
-    //console.log(curCourse);
+    //console.log(Object.entries(courses));
     return(
         <div className="course-list" >
-            { Object.entries(courses).map(([id, course]) => selection === course.term && <Course key={id} identification ={id} course={course} selected={selected} toggleSelected={toggleSelected}/>) }
+            { Object.entries(courses).map(([id, course]) => selection === course.term && <Course key={id} identification ={id} course={course} courses = {courses} selected={selected} toggleSelected={toggleSelected}/>) }
         </div>
     )
 };

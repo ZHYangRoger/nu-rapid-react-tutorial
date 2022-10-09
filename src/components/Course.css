@@ -6,7 +6,7 @@
     padding: 11px;
     margin: 5px 5px;
     position: relative;
-    height: 210px;
+    height: 250px;
     cursor: pointer;
 }
 
@@ -16,6 +16,7 @@
 }
 
 .meeting-time{
+    margin-top: 30px;
     padding: 6px;
     border-top: 1px solid rgb(197, 197, 197);
     display: block;
@@ -28,3 +29,7 @@
     padding: 6px;
 }
 
+.conflict{
+    background-color:rgb(123, 123, 123);
+    cursor:auto;
+}
