@@ -6,8 +6,8 @@
     padding: 11px;
     margin: 5px 5px;
     position: relative;
-    height: 250px;
-    cursor: pointer;
+    height: 280px;
+    cursor: auto;
 }
 
 .selected{
@@ -16,7 +16,7 @@
 }
 
 .meeting-time{
-    margin-top: 30px;
+    margin-top: 70px;
     padding: 6px;
     border-top: 1px solid rgb(197, 197, 197);
     display: block;
@@ -32,4 +32,9 @@
 .conflict{
     background-color:rgb(123, 123, 123);
     cursor:auto;
+}
+
+.bi-pencil-square{
+    position: relative;
+    color: #146C43;
 }

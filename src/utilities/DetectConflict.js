@@ -22,12 +22,12 @@ const checkDateConflict = (e, course) => (
 //Time
 const checkTimeConflict = (e, course) => {
     
-    console.log(e.meets);
-    console.log('cur');
-    console.log(course.meets);
+    //console.log(e.meets);
+    //console.log('cur');
+    //console.log(course.meets);
     let [s1, e1] = calculateTime(parseDateTime(e.meets).timeStart, parseDateTime(e.meets).timeEnd);
     let [s2, e2] = calculateTime(parseDateTime(course.meets).timeStart, parseDateTime(course.meets).timeEnd);
-    console.log(s1, e1, s2, e2)
+    //console.log(s1, e1, s2, e2)
     return ((s1 >= s2 && s1 <= e2) || (e1 >= s2 && e1 <= e2) || (s1 <= s2 && e1 >= e2));
 }
 

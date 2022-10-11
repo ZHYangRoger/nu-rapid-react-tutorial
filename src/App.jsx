@@ -4,6 +4,8 @@ import {useJsonQuery} from "./utilities/fetch.js";
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import TermPage from "./components/TermPage.jsx";
 import {useState} from "react";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import EditForm from "./components/EditForm";
 
 const queryClient = new QueryClient();
 
@@ -25,7 +27,12 @@ const Main = () => {
   return(
       <div className="entire">
         <Banner title={schedule.title}></Banner>
-        <TermPage courses={schedule.courses} selected={selected} toggleSelected={toggleSelected}></TermPage>
+        <BrowserRouter>
+          <Routes>
+            <Route path="/" element={<TermPage courses={schedule.courses} selected={selected} toggleSelected={toggleSelected} />} />
+            <Route path="/edit/:id" element={<EditForm courses={schedule.courses} />} />
+          </Routes>
+        </BrowserRouter>
       </div>
     );
 };
