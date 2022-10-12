@@ -3,10 +3,10 @@ import { useNavigate, useParams } from "react-router-dom";
 
 const validateUserData = (key, val) => {
   switch (key) {
-    case 'firstName': case 'lastName':
-      return /(^\w\w)/.test(val) ? '' : 'must be least two characters';
-    case 'email':
-      return /^\w+@\w+[.]\w+/.test(val) ? '' : 'must contain name@domain.top-level-domain';
+    case 'title':
+      return /(^\w\w)/.test(val) ? '' : 'must be at least two characters';
+    case 'meets':
+      return /^$|([M|Tu|W|Th|F]?[M|Tu|W|Th|F]?[M|Tu|W|Th|F] ([0-9]|[0-9][0-9]):[0-9][0-9]-([0-9]|[0-9][0-9]):[0-9][0-9])/g.test(val) ? '' : 'must contain days and start-end, e.g., MWF 12:00-13:20';
     default: return '';
   }
 };
