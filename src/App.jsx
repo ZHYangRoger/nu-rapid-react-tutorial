@@ -6,6 +6,7 @@ import TermPage from "./components/TermPage.jsx";
 import {useState} from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import EditForm from "./components/EditForm";
+import { useDbData } from "./utilities/firebase";
 
 const queryClient = new QueryClient();
 
@@ -18,19 +19,19 @@ const Main = () => {
     : [...selected, id]
   );
 
-  const [schedule, isLoading, error] = useJsonQuery("https://courses.cs.northwestern.edu/394/guides/data/cs-courses.php");
+  const [data, error] = useDbData('/');
 
   if (error) return <h1>Error loading user data: {`${error}`}</h1>;
-  if (isLoading) return <h1>Loading user data...</h1>;
-  if (!schedule) return <h1>No user data found</h1>;
+  if (!data) return <h1>Loading user data...</h1>;
+  if (!data) return <h1>No user data found</h1>;
 
   return(
       <div className="entire">
-        <Banner title={schedule.title}></Banner>
+        <Banner title={data.title}></Banner>
         <BrowserRouter>
           <Routes>
-            <Route path="/" element={<TermPage courses={schedule.courses} selected={selected} toggleSelected={toggleSelected} />} />
-            <Route path="/edit/:id" element={<EditForm courses={schedule.courses} />} />
+            <Route path="/" element={<TermPage courses={data.courses} selected={selected} toggleSelected={toggleSelected} />} />
+            <Route path="/edit/:id" element={<EditForm courses={data.courses} />} />
           </Routes>
         </BrowserRouter>
       </div>
