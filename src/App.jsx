@@ -1,5 +1,4 @@
 import './App.css';
-import Banner from "./components/Banner.jsx";
 import {useJsonQuery} from "./utilities/fetch.js";
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import TermPage from "./components/TermPage.jsx";
@@ -7,6 +6,7 @@ import {useState} from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import EditForm from "./components/EditForm";
 import { useDbData } from "./utilities/firebase";
+import Navigation from './components/Navigation';
 
 const queryClient = new QueryClient();
 
@@ -27,7 +27,7 @@ const Main = () => {
 
   return(
       <div className="entire">
-        <Banner title={data.title}></Banner>
+        <Navigation title={data.title}></Navigation>
         <BrowserRouter>
           <Routes>
             <Route path="/" element={<TermPage courses={data.courses} selected={selected} toggleSelected={toggleSelected} />} />

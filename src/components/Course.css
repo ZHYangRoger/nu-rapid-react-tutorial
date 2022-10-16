@@ -38,3 +38,7 @@
     position: relative;
     color: #146C43;
 }
+
+.deactivate{
+    display: none;
+}
