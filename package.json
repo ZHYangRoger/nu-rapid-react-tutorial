@@ -25,6 +25,9 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "cy:open": "cypress open --e2e",
+    "em:start": "firebase emulators:start --only database,auth --import=./saved-data --export-on-exit",
+    "em:exec": "REACT_APP_EMULATE=true firebase emulators:exec --only database,auth --import=./saved-data 'npm start'",
+    "em:cy:open": "start-server-and-test em:exec http://127.0.0.1:3000 cy:open",
     "eject": "react-scripts eject"
   },
   "eslintConfig": {
@@ -46,6 +49,7 @@
     ]
   },
   "devDependencies": {
-    "cypress": "^10.11.0"
+    "cypress": "^10.11.0",
+    "start-server-and-test": "^1.14.0"
   }
 }

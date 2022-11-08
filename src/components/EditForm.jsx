@@ -35,14 +35,16 @@ const ButtonBar = ({message, disabled}) => {
 const EditForm = ({courses}) => {
   //const [update, result] = useDbUpdate(`/users/${user.id}`);
   const { id } = useParams();
-  const [update, result] = useDbUpdate(`/edit/${courses[id].number}`);
+  const [update, result] = useDbUpdate(`/courses/${courses[id].term[0]}${courses[id].number}`);
   const [state, change] = useFormData(validateUserData, courses[id]);
   console.log(courses[id]);
+  const navigate = useNavigate();
 
   const submit = (evt) => {
     evt.preventDefault();
     if (!state.errors) {
       update(state.values);
+      navigate(-1);
     }
   };
   const setDisabled = (state.errors || (state.values.title === courses[id].title && state.values.meets === courses[id].meets));

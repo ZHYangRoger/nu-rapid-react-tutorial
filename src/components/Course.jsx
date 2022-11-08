@@ -15,7 +15,7 @@ const Course = ({ id, identification, course, courses, selected, toggleSelected 
     //console.log("course");
     return (
         <div className={`course-card ${selected.includes(identification) ? 'selected' : DetectConflict(identification, course, courses, selected) ? 'conflict' : ''} `}
-            onClick={() => !selected.includes(identification) && DetectConflict(identification, course, courses, selected) ? '' : toggleSelected(identification)}>
+            onClick={() => !selected.includes(identification) && DetectConflict(identification, course, courses, selected) ? '' : toggleSelected(identification)} data-cy="course">
             <h2>{course.term} CS {course.number}</h2>
             <p className="class-title">{course.title}</p>
             <p className="meeting-time">{course.meets}</p>
